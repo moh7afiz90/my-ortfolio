@@ -82,7 +82,7 @@ describe('renderPostCard', () => {
 
   it('should include post title with link', () => {
     const result = renderPostCard(mockPost);
-    expect(result).toContain('<a href="/blog/test-post">Test Post</a>');
+    expect(result).toContain('<a href="/blog/test-post/">Test Post</a>');
   });
 
   it('should include formatted date', () => {

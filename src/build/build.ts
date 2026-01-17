@@ -91,7 +91,7 @@ export function getPosts(): Post[] {
 export function renderPostCard(post: Post): string {
   return `
     <li class="post-card">
-      <h3><a href="/blog/${post.slug}">${post.title}</a></h3>
+      <h3><a href="/blog/${post.slug}/">${post.title}</a></h3>
       <p class="post-meta">${formatDate(post.date)}</p>
       <p class="post-description">${post.description}</p>
     </li>

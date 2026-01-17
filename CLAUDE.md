@@ -2,8 +2,7 @@
 
 ## Commit Convention
 
-- Format: `feat(portfolio): short description`
-- Keep commit messages concise
+- Format: `feat(portfolio): short description` (single line only, no body/details)
 - Commit frequently
 - Do not include AI tool names in commit messages
 

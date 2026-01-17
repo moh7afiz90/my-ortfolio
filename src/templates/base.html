@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{title}}</title>
   <meta name="description" content="{{description}}">
+  <meta name="theme-color" content="#0a0a0f">
   <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
+  <div class="spotlight"></div>
   <a href="#main" class="skip-link">Skip to content</a>
+
   <header class="site-header">
     <nav>
       <a href="/" class="site-name">Mohanad Elhag</a>
@@ -20,11 +23,27 @@
       </ul>
     </nav>
   </header>
+
   <main id="main">
     {{content}}
   </main>
+
   <footer class="site-footer">
-    <p>&copy; {{year}} Mohanad Elhag</p>
+    <div class="container">
+      <p class="footer-text">&copy; {{year}} Mohanad Elhag</p>
+      <div class="footer-links">
+        <a href="https://github.com/moh7afiz90" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/mohanad-elhag" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    // Spotlight effect
+    document.addEventListener('mousemove', (e) => {
+      document.body.style.setProperty('--mouse-x', e.clientX + 'px');
+      document.body.style.setProperty('--mouse-y', e.clientY + 'px');
+    });
+  </script>
 </body>
 </html>

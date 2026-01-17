@@ -1,61 +1,81 @@
 ---
 title: "Rebuilding My Fundamentals"
 date: "2025-01-17"
-description: "Why I'm going back to basics after 8 years as a frontend engineer."
+description: "After 8 years in frontend development, I'm going back to the basics. Here's why."
 slug: "rebuilding-my-fundamentals"
 ---
 
-After 8 years of working as a frontend engineer, I've decided to go back to basics. Here's why.
+Eight years ago, I wrote my first line of JavaScript. Since then, I've shipped production code at scale, led frontend teams, and architected applications used by millions. But somewhere along the way, I realized something uncomfortable: I'd become dependent on abstractions I didn't fully understand.
 
-## The Problem with Frameworks
+## The Realization
 
-Don't get me wrong — frameworks like React, Vue, and Angular are incredibly powerful. They've helped me build complex applications and ship features quickly. But somewhere along the way, I realized I'd become dependent on them.
+It happened during a performance debugging session. Our React app was sluggish, and after hours of profiling, the issue came down to a fundamental misunderstanding of how the browser's rendering pipeline works. I knew *what* `requestAnimationFrame` did, but not *why* it mattered. I understood React's reconciliation at a high level, but couldn't explain the actual DOM operations happening underneath.
 
-When faced with a simple task like centering a div, I found myself reaching for Flexbox utilities in Tailwind instead of understanding the underlying CSS. When building a form, I'd pull in a library instead of writing the validation logic myself.
+That was a wake-up call.
 
-## What I Lost
+## What I Lost Along the Way
 
-The abstractions that made me productive also made me complacent:
+When you spend years working with abstractions, you start to lose touch with the platform:
 
-- **CSS intuition**: I forgot how the cascade actually works
-- **HTML semantics**: I'd reach for `<div>` when a `<button>` or `<article>` was more appropriate
-- **Browser APIs**: I couldn't remember how `fetch` works without looking it up
-- **Performance awareness**: I'd bundle megabytes of JavaScript without thinking
+- **CSS became utility classes** — I could build any layout with Tailwind, but forgot how `position: sticky` actually works
+- **HTML became JSX** — I stopped thinking about semantic structure and accessibility
+- **JavaScript became React** — Hooks replaced my understanding of closures and the event loop
+- **The browser became a black box** — I trusted the framework to handle everything
 
-## The Plan
+This isn't a critique of frameworks. React made me incredibly productive. Tailwind ships fast. But productivity without understanding has a ceiling.
 
-So I'm rebuilding from the ground up. This site is the first step:
+## The Experiment
 
-1. **No CSS frameworks** — Every style is hand-written
-2. **No React/Vue** — Pure HTML templates
-3. **Minimal dependencies** — Only what's truly necessary
-4. **Build my own tools** — This site uses a custom static site generator
+This site is my reset button. The rules are simple:
 
-## What I'm Learning
+1. **No UI frameworks** — No React, Vue, or Svelte
+2. **No CSS frameworks** — Every style written by hand
+3. **Minimal dependencies** — Only what's absolutely necessary
+4. **Build my own tools** — A custom static site generator, not Gatsby or Astro
 
-Even building this simple blog taught me things:
+The result? A site that loads in milliseconds, scores 100 on Lighthouse, and forced me to actually *think* about every decision.
+
+## What I'm Relearning
+
+Even building this simple blog surfaced gaps in my knowledge:
+
+**CSS Layout** — I'd forgotten that `margin: 0 auto` centers block elements. I'd been reaching for Flexbox for everything.
 
 ```css
-/* I'd forgotten you could do this without Flexbox */
 .container {
   max-width: 720px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 ```
 
+**Semantic HTML** — There's a `<time>` element with a `datetime` attribute. Screen readers use it. I'd been using `<span>` for years.
+
 ```html
-<!-- Semantic HTML matters for accessibility -->
-<article>
-  <header>
-    <h1>Post Title</h1>
-    <time datetime="2025-01-17">January 17, 2025</time>
-  </header>
-  <main>Content here</main>
-</article>
+<time datetime="2025-01-17">January 17, 2025</time>
 ```
 
-## Moving Forward
+**Template Literals** — Before JSX, we had template strings. They're still powerful:
 
-This is just the beginning. I'll be documenting my journey here — the things I re-learn, the mistakes I make, and the insights I gain along the way.
+```typescript
+function renderPost(post: Post): string {
+  return `
+    <article>
+      <h1>${post.title}</h1>
+      <p>${post.content}</p>
+    </article>
+  `;
+}
+```
 
-If you're feeling like you've lost touch with the fundamentals, maybe it's time to strip away the abstractions and see what's underneath. You might be surprised what you find.
+## The Path Forward
+
+I'm not abandoning React — it's still my tool of choice for complex applications. But I want to be the kind of engineer who *chooses* the abstraction rather than *needing* it.
+
+Over the coming months, I'll be documenting what I relearn:
+- How CSS cascade and specificity actually work
+- Browser rendering and the critical path
+- JavaScript execution and the event loop
+- Web APIs I've never touched
+
+If you're a senior engineer who feels like you've been coasting on framework knowledge, maybe it's time to dig deeper. The fundamentals haven't changed — we just stopped paying attention.
